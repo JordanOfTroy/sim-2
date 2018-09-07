@@ -13,6 +13,7 @@ app.use(bodyParser.json())
 
 app.get('/api/houses', ctrl.getAllHouses)
 app.post('/api/houses', ctrl.addNewHouse)
+app.delete('/api/houses/:id', ctrl.deleteAHouse)
 
 /************************************************************ */
 massive(process.env.CONNECTION_STRING)

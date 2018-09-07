@@ -19,11 +19,10 @@ export default class Dashboard extends Component {
     }))
   }
 
-  componentDidUpdate() {
-    axios.get('/api/houses').then(res => this.setState({
-      houses: res.data
-    }))
-  }
+  // handleDelete (id) {
+  //   axios.delete(`/api/houses/:${id}`)
+  //   .then(console.log('all done'))
+  //  }
 
 
   render () {
@@ -41,6 +40,10 @@ export default class Dashboard extends Component {
             zipcode = {house.zipcode}
             imageURL = {house.imageurl}
             />
+            <button
+            // onClick = {this.handleDelete}
+            >X</button>
+            <hr/>
           </div>
         )
       })
