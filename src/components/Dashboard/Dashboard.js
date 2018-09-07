@@ -19,6 +19,12 @@ export default class Dashboard extends Component {
     }))
   }
 
+  componentDidUpdate() {
+    axios.get('/api/houses').then(res => this.setState({
+      houses: res.data
+    }))
+  }
+
 
   render () {
     let {houses} = this.state
@@ -42,6 +48,7 @@ export default class Dashboard extends Component {
         <div>
           <Link to = '/wizard'
           ><button>Add New Property</button></Link>
+          <hr/>
           {houseList}
         </div>
       )

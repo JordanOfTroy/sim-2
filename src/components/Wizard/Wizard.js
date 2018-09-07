@@ -1,5 +1,6 @@
 import React, {Component} from 'react' 
 import {Link} from 'react-router-dom'
+import axios from 'axios'
 
 export default class Wizard extends Component {
   constructor (props) {
@@ -15,6 +16,7 @@ export default class Wizard extends Component {
 
     }
     this.handleUserInput = this.handleUserInput.bind(this)
+    this.addANewHouse = this.addANewHouse.bind(this)
   }
 
   handleUserInput (e) {
@@ -23,9 +25,13 @@ export default class Wizard extends Component {
     })
   }
 
+  addANewHouse () {
+    let {propertyName, address, city, state, zipcode, imageURL} = this.state
+    axios.post('/api/houses', {propertyName, address, city, state, zipcode, imageURL})
+    .then(console.log('it went and came back'))
+  }
 
   render () {
-    console.log('wizProp:', this.props)
     return (
       <div>
         <h1>Wizard</h1>
@@ -66,7 +72,7 @@ export default class Wizard extends Component {
         </div>
         <div>
           <input
-          value = {this.state.zipcode}
+          value = {this.state.imageURL}
           placeholder = 'Please enter URL'
           onChange = {this.handleUserInput} 
           name = 'imageURL'/>
@@ -74,6 +80,13 @@ export default class Wizard extends Component {
         <Link
         to = '/'
         ><button>Cancel</button></Link>
+        <Link
+        to = '/'
+        ><button
+          onClick = {this.addANewHouse}
+        >Add House</button>
+        </Link>
+        
       </div>
     )
   }

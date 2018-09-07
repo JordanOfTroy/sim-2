@@ -12,6 +12,7 @@ app.use(bodyParser.json())
 /************************************************************ */
 
 app.get('/api/houses', ctrl.getAllHouses)
+app.post('/api/houses', ctrl.addNewHouse)
 
 /************************************************************ */
 massive(process.env.CONNECTION_STRING)
