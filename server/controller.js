@@ -25,11 +25,11 @@ module.exports = {
   },
 
   deleteAHouse: (req, res) => {
+    console.log('house goes bye-bye', req.params)
     const db = req.app.get('db')
     let {id} = req.params
     db.delete_house({id})
     .then(houses => {
-      // console.log('house goes bye-bye')
       res.status(200).send(houses)
     })
     .catch(err => {

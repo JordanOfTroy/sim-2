@@ -5,7 +5,7 @@ import React from 'react'
 
 export default function House (props) {
   
-  let {address, city, state, zipcode, imageURL, propertyName} = props
+  let {address, city, state, zipcode, imageURL, propertyName, id} = props
   // console.log('houseProps:', id)
   return (
     <div>
@@ -16,6 +16,10 @@ export default function House (props) {
         <p>{city}</p>
         <p>{state}</p>
         <p>{zipcode}</p>
+        <button
+        value = {id}
+        onClick = {() => props.handleDelete(id)}
+        >Delete</button>
       </div>
     </div>
   )
