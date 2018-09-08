@@ -1,8 +1,10 @@
 import React, {Component} from 'react' 
 import {Link} from 'react-router-dom'
-import axios from 'axios'
+import {connect} from 'react-redux'
+import {handleApprenticeOne} from '../../../ducks/reducer'
 
-export default class Wizard extends Component {
+
+class ApprenticeOne extends Component {
   constructor (props) {
     super(props) 
 
@@ -10,13 +12,12 @@ export default class Wizard extends Component {
       propertyName: '',
       address: '',
       city: '',
-      state: '',
+      stateIN: '',
       zipcode: '',
       imageURL:''
 
     }
     this.handleUserInput = this.handleUserInput.bind(this)
-    this.addANewHouse = this.addANewHouse.bind(this)
   }
 
   handleUserInput (e) {
@@ -25,69 +26,65 @@ export default class Wizard extends Component {
     })
   }
 
-  addANewHouse () {
-    let {propertyName, address, city, state, zipcode, imageURL} = this.state
-    axios.post('/api/houses', {propertyName, address, city, state, zipcode, imageURL})
-    .then(console.log('it went and came back'))
-  }
+ 
 
   render () {
+    console.log(this.props)
+    let {handleApprenticeOne} = this.props
     return (
       <div>
-        <h1>Wizard</h1>
+        <h1>Apprentice One</h1>
         <div>
           <input
-          value = {this.state.propertyName}
           placeholder = 'Please enter Property Name'
-          onChange = {this.handleUserInput} 
+          onChange = {(e) => handleApprenticeOne(e)} 
           name = 'propertyName'/>
         </div>
         <div>
           <input
-          value = {this.state.address}
           placeholder = 'Please enter Street Address'
-          onChange = {this.handleUserInput} 
+          onChange = {(e) => handleApprenticeOne(e)} 
           name = 'address'/>
         </div>
         <div>
           <input
-          value = {this.state.city}
           placeholder = 'Please enter City'
-          onChange = {this.handleUserInput} 
+          onChange = {(e) => handleApprenticeOne(e)} 
           name = 'city'/>
         </div>
         <div>
           <input
-          value = {this.state.state}
-          placeholder = 'Please enter State as XX'
-          onChange = {this.handleUserInput} 
-          name = 'state'/>
+          placeholder = 'Please enter State initials'
+          onChange = {(e) => handleApprenticeOne(e)} 
+          name = 'stateIN'/>
         </div>
         <div>
           <input
-          value = {this.state.zipcode}
           placeholder = 'Please enter Zipcode'
-          onChange = {this.handleUserInput} 
+          onChange = {(e) => handleApprenticeOne(e)} 
           name = 'zipcode'/>
         </div>
-        <div>
-          <input
-          value = {this.state.imageURL}
-          placeholder = 'Please enter URL'
-          onChange = {this.handleUserInput} 
-          name = 'imageURL'/>
-        </div>
         <Link
-        to = '/'
-        ><button>Cancel</button></Link>
-        <Link
-        to = '/'
+        to = '/wizard/apprentice2'
         ><button
-          onClick = {this.addANewHouse}
-        >Add House</button>
+        >Next</button>
         </Link>
         
       </div>
     )
   }
 }
+
+function mapStateToProps (state) {
+  let {propertyName, address, stateIN, city, zipcode} = state
+
+  return {
+    propertyName, 
+    address, 
+    city, 
+    stateIN,
+    zipcode
+  }
+}
+
+export default connect(mapStateToProps, {handleApprenticeOne})(ApprenticeOne)
