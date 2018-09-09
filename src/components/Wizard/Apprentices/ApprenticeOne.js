@@ -29,12 +29,11 @@ class ApprenticeOne extends Component {
 
   handleClick () {
     let info = this.state
-    handleApprenticeOne(info)
+    this.props.handleApprenticeOne(info)
   }
  
 
   render () {
-    // console.log('aprOne:',this.state)
     return (
       <div>
         <h1>Apprentice One</h1>
