@@ -10,12 +10,11 @@ let initialState = {
 const HANDLE_APPRENTICE_ONE = 'HANDLE_APPRENTICE_ONE'
 /************************************************************* */
 
-export function handleApprenticeOne (e) {
+export function handleApprenticeOne (info) {
+  console.log('reducer:',info)
   return {
     type: HANDLE_APPRENTICE_ONE,
-    // payload: {propertyName, address, city, stateIN, zipcode}
-    payload: {[e.target.name]:e.target.value}
-
+    
   }
 }
 
