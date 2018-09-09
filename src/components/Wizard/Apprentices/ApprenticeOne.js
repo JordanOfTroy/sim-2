@@ -34,7 +34,7 @@ class ApprenticeOne extends Component {
  
 
   render () {
-    console.log('aprOne:',this.state)
+    // console.log('aprOne:',this.state)
     return (
       <div>
         <h1>Apprentice One</h1>
