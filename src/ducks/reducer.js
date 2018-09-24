@@ -11,7 +11,8 @@ let initialState = {
 /************************************************************* */
 const HANDLE_APPRENTICE_ONE = 'HANDLE_APPRENTICE_ONE',
       UPDATE_IMAGE_URL = 'UPDATE_IMAGE_URL',
-      UPDATE_DAT_MONEY = 'UPDATE_DAT_MONEY'
+      UPDATE_DAT_MONEY = 'UPDATE_DAT_MONEY',
+      RESET_STATE = 'RESET_STATE'
 /************************************************************* */
 
 export function handleApprenticeOne (info) {
@@ -38,6 +39,12 @@ export function updateDatMoney (datInfo) {
   }
 }
 
+export function resetState () {
+ return {
+   type: RESET_STATE,
+ } 
+}
+
 /************************************************************* */
 function reducer (state=initialState, action) {
   switch(action.type) {
@@ -59,7 +66,19 @@ function reducer (state=initialState, action) {
     case UPDATE_DAT_MONEY:
       let {mortgage, rent} = action.payload 
       return Object.assign({}, state, {mortgage: mortgage, rent: rent})
-    
+
+    case RESET_STATE:
+      return Object.assign({}, state, {
+        propertyName: '',
+        address: '',
+        city: '',
+        stateIN: '',
+        zipcode: '',
+        imageURL:'',
+        mortgage: '',
+        rent: ''
+      })
+      
     default: return state
   }
   

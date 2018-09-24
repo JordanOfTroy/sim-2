@@ -13,8 +13,7 @@ class ApprenticeOne extends Component {
       address: '',
       city: '',
       stateIN: '',
-      zipcode: '',
-      imageURL:''
+      zipcode: ''
 
     }
     this.handleUserInput = this.handleUserInput.bind(this)
@@ -31,7 +30,21 @@ class ApprenticeOne extends Component {
     let info = this.state
     this.props.handleApprenticeOne(info)
   }
+
+  componentDidMount() {
+    let {propertyName, address, stateIN, city, zipcode} = this.props
+    this.setState({
+      propertyName: propertyName,
+      stateIN: stateIN,
+      address: address,
+      city: city,
+      zipcode: zipcode
+    })
+  }
+
  
+ 
+
 
   render () {
     return (
@@ -78,6 +91,7 @@ class ApprenticeOne extends Component {
           onClick ={this.handleClick}
         >Next</button>
         </Link>
+        
         
       </div>
     )

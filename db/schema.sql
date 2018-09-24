@@ -5,7 +5,7 @@ ID serial primary key,
 propertyname varchar(50),
 address text,
 city text,
-state char(2),
+state text,
 zipcode integer,
 imageURL text
 );

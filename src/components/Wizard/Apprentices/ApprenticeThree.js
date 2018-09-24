@@ -27,6 +27,15 @@ class ApprenticeThree extends Component {
   handleClick () {
     let datInfo = this.state
     this.props.updateDatMoney(datInfo)
+    
+  }
+
+  componentDidMount() {
+    let {mortgage, rent} = this.props
+    this.setState({
+      mortgage: mortgage,
+      rent: rent
+    })
   }
 
   render () {
@@ -48,9 +57,12 @@ class ApprenticeThree extends Component {
         <Link to = '/wizard/apprentice2'>
           <button>Previous</button>
         </Link>
-        <button
-        onClick = {this.handleClick}
-        >Add Houes</button>
+        <Link to = '/wizard/apprentice4'>
+          <button
+            onClick = {this.handleClick}
+          >Add Houes</button>
+        </Link>
+       
       </div>
     )
   }

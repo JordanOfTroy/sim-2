@@ -8,7 +8,7 @@ values (
 ${propertyName},
 ${address},
 ${city},
-${state},
+${stateIN},
 ${zipcode},
 ${imageURL}
 );

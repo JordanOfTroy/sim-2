@@ -20,6 +20,12 @@ export default class Dashboard extends Component {
     }))
   }
 
+  componentDidUpdate() {
+    axios.get('/api/houses').then(res => this.setState({
+      houses: res.data
+    }))
+  }
+
 
   handleDelete (id) {
     console.log(id)

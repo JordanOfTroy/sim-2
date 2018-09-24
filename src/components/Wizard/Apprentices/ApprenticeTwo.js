@@ -27,12 +27,19 @@ class ApprenticeTwo extends Component {
     this.props.updateImageURL(imageURL)
   }
 
+  componentDidMount() {
+      let {imageURL} = this.props
+      this.setState({
+        imageURL: imageURL
+      })
+    }
 
   render () {
     return (
       <div>
         <h1>Apprentice Two</h1>
         <input 
+        value = {this.state.imageURL}
         onChange = {this.handleInput}
         placeholder = 'Please enter image'/>
         <Link to = '/wizard'>
@@ -43,6 +50,7 @@ class ApprenticeTwo extends Component {
         to = '/wizard/apprentice3'>
           <button>Next</button>
         </Link>
+       
       </div>
     )
   }

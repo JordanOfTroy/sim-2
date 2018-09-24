@@ -12,9 +12,9 @@ module.exports = {
 
   addNewHouse: (req, res) => {
     // console.log('you got this far:', req.body)
-    let {propertyName, address, city, state, zipcode, imageURL} = req.body
+    let {propertyName, address, city, stateIN, zipcode, imageURL} = req.body
     const db = req.app.get('db')
-    db.add_new_house({propertyName, address, city, state, zipcode, imageURL})
+    db.add_new_house({propertyName, address, city, stateIN, zipcode, imageURL})
     .then(houses => {
       res.status(200).send(houses)
     })
